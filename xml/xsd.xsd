@@ -1,0 +1,138 @@
+<xs:schema xmlns:xs="http://w3.org/2001/XMLSchema">
+
+  <!--  Tipo ID Atracción  -->
+  <xs:simpleType name="T_idAtraccion">
+    <xs:restriction base="string">
+      <xs:pattern value="(PLA|TFW|PIR|CCL|FUt)-\d{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--  Tipo Estado Atracción  -->
+  <xs:simpleType name="T_estadoAtraccion">
+    <xs:restriction base="string">
+      <xs:enumeration value="Operativa"/>
+      <xs:enumeration value="En Obras"/>
+      <xs:enumeration value="Cerrada"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--  Tipo Altura Min Atracción  -->
+  <xs:simpleType name="T_alturaMinAtraccion">
+    <xs:restriction base="float">
+      <xs:minInclusive value="0.80"/>
+      <xs:maxInclusive value="1.40"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--  Tipo Altura Max Atracción  -->
+  <xs:simpleType name="T_alturaMaxAtraccion">
+    <xs:restriction base="float">
+      <xs:minInclusive value="1.20"/>
+      <xs:maxInclusive value="1.95"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--  Tipo tipo Atracción  -->
+  <xs:simpleType name="T_tipoAtraccion">
+    <xs:restriction base="string">
+      <xs:enumeration value="Montaña rusa"/>
+      <xs:enumeration value="Atracción acuática"/>
+      <xs:enumeration value="Atracción giratoria"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--  Tipo Intensidad Atracción  -->
+  <xs:simpleType name="T_intensidadAtraccion">
+    <xs:restriction base="string">
+      <xs:enumeration value="Infantil"/>
+      <xs:enumeration value="Suave"/>
+      <xs:enumeration value="Moderado"/>
+      <xs:enumeration value="Intenso"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--  Tipo AccesoExpress Atracción  -->
+  <xs:simpleType name="T_accesoExpressAtraccion">
+    <xs:restriction base="boolean"/>
+  </xs:simpleType>
+
+  <!--  Tipo FechaUltimaRevision Atracción  -->
+  <xs:simpleType name="T_fechaURAtraccion">
+    <xs:restriction base="date"/>
+  </xs:simpleType>
+
+  <!--  Tipo ClaveMantenimiento Atracción  -->
+  <xs:simpleType name="T_clavemantenimientoAtraccion">
+    <xs:restriction base="string"/>
+  </xs:simpleType>
+
+  <!--  Tipo Atracción  -->
+  <xs:complexType name="Atraccion">
+    <xs:sequence>
+      <xs:element name="nombre" type="T_idAtraccion"/>
+      <xs:element name="estado" type="T_estadoAtraccion"/>
+      <xs:element name="alturaminima" type="T_alturaMinAtraccion" minOccurs="0"/>
+      <xs:element name="alturamaxima" type="T_alturaMaxAtraccion" minOccurs="0"/>
+      <xs:element name="tipo" type="T_tipoAtraccion" default="Atracción"/>
+      <xs:element name="intensidad" type="T_intensidadAtraccion"/>
+      <xs:element name="accesoexpress" type="T_accesoExpressAtraccion"/>
+      <xs:element name="fecharevision" type="T_fechaURAtraccion"/>
+      <xs:element name="idmantenimiento" type="T_clavemantenimientoAtraccion"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="T_idAtraccion" use="required"/>
+    <xs:unique name="unique-idmantenimiento">
+      <xs:selector xpath="idmantenimiento"/>
+      <xs:field xpath="."/>
+    </xs:unique>
+  </xs:complexType>
+
+  <!--  Tipos de Area Temática  -->
+
+  <!--  Tipos Nombre Area Temática  -->
+  <xs:simpleType name="T_nombreAreaTematica">
+    <xs:restriction base="string"/>
+  </xs:simpleType>
+
+  <!--  Tipos Decoracion Area Temática  -->
+  <xs:simpleType name="T_decoracionAreaTematica">
+    <xs:restriction base="string"/>
+  </xs:simpleType>
+
+  <!--  Area Temática  -->
+  <xs:complexType name="AreaTematica">
+    <xs:sequence>
+      <xs:element name="nombreAT" type="T_nombreAreaTematica"/>
+      <xs:element name="descripcion" type="T_decoracionAreaTematica"/>
+      <xs:element name="Atraccion" type="Atraccion" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--  Tipo Personal  -->
+
+  <!--  Tipo uid Personal  -->
+  <xs:simpleType name="T_UIDPersonal">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--  Tipo tipo Personal  -->
+  <xs:simpleType name="T_tipoPersonal">
+    <xs:restriction base="string">
+      <xs:enumeration value="Responsable de área"/>
+      <xs:enumeration value="Técnico"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--  Personal  -->
+  <xs:complexType name="Personal">
+    <xs:sequence>
+      <xs:element name="tipoPersonal" type="T_tipoPersonal"/>
+      <xs:choice>
+        <xs:element name="atraccion" type="Atraccion"/>
+        <xs:element name="areatematica" type="AreaTematica"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="uid" type="T_UIDPersonal" use="REQUIRED"/>
+  </xs:complexType> 
+</xs:schema>

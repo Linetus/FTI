@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://w3.org/2001/XMLSchema">
+    <AreasTematicas>
+        <!-- Plaza Mayor-->
+        <AreaTematica>
+            <nombreAT>Plaza Mayor</nombreAT>
+            <descripcion>Área central del parque</descripcion>
+
+            <Atraccion id="PLA-01">
+                <nombre>Carrusel</nombre>
+                <estado>Operativa</estado>
+                <alturaminima>0.80</alturaminima>
+                <tipo>Infantil</tipo>
+                <intensidad>Suave</intensidad>
+                <accesoexpress>false</accesoexpress>
+                <fecharevision>2023-02-20</fecharevision>
+                <idmantenimiento>MT001</idmantenimiento>
+            </Atraccion>
+
+            <Atraccion id="PLA-02">
+                <nombre>Motospeed</nombre>
+                <estado>Operativa</estado>
+                <alturaminima>1.20</alturaminima>
+                <alturamaxima>1.95</alturamaxima>
+                <tipo>Montaña rusa</tipo>
+                <intensidad>Moderado</intensidad>
+                <accesoexpress>true</accesoexpress>
+                <fecharevision>2023-01-11</fecharevision>
+                <idmantenimiento>MT002</idmantenimiento>
+            </Atraccion>
+            <Atraccion id="PLA-03">
+                <nombre>Caída Libre</nombre>
+                <estado>Operativa</estado>
+                <alturaminima>1.40</alturaminima>
+                <alturamaxima>1.95</alturamaxima>
+                <tipo>Atracción giratoria</tipo>
+                <intensidad>Intenso</intensidad>
+                <accesoexpress>true</accesoexpress>
+                <fecharevision>2024-02-01</fecharevision>
+                <idmantenimiento>MT003</idmantenimiento>
+            </Atraccion>
+        </AreaTematica>
+
+
+        <!-- The Far West -->
+        <AreaTematica>
+            <nombreAT>The Far West</nombreAT>
+            <descripcion>Área inspirada en el salvaje oeste</descripcion>
+            <Atraccion id="TFW-01">
+                <nombre>Saloon</nombre>
+                <estado>Operativa</estado>
+                <alturaminima>1.30</alturaminima>
+                <tipo>Atracción giratoria</tipo>
+                <intensidad>Moderado</intensidad>
+                <accesoexpress>true</accesoexpress>
+                <fecharevision>2021-01-01</fecharevision>
+                <idmantenimiento>MT004</idmantenimiento>
+            </Atraccion>
+
+            <Atraccion id="TFW-02">
+                <nombre>Iron Cowboy</nombre>
+                <estado>En Obras</estado>
+                <alturaminima>1.20</alturaminima>
+                <alturamaxima>1.90</alturamaxima>
+                <tipo>Montaña rusa</tipo>
+                <intensidad>Intenso</intensidad>
+                <accesoexpress>true</accesoexpress>
+                <idmantenimiento>MT005</idmantenimiento>
+            </Atraccion>
+
+            <Atraccion id="TFW-03">
+                <nombre>Rápidos de Río Grande</nombre>
+                <estado>Operativa</estado>
+                <alturaminima>1.00</alturaminima>
+                <tipo>Atracción acuática</tipo>
+                <intensidad>Moderado</intensidad>
+                <accesoexpress>true</accesoexpress>
+                <fecharevision>2024-02-01</fecharevision>
+                <idmantenimiento>MT006</idmantenimiento>
+            </Atraccion>
+        </AreaTematica>
+
+        <!-- Territorio Pirata -->
+        <AreaTematica>
+            <nombreAT>Territorio Pirata</nombreAT>
+            <descripcion>Área inspirada en piratas.</descripcion>
+
+            <Atraccion id="PIR-01">
+                <nombre>Barco Pirata</nombre>
+                <estado>Cerrada</estado>
+                <alturaminima>1.20</alturaminima>
+                <tipo>Atracción giratoria</tipo>
+                <intensidad>Moderado</intensidad>
+                <accesoexpress>false</accesoexpress>
+                <fecharevision>2023-03-02</fecharevision>
+                <idmantenimiento>MT007</idmantenimiento>
+            </Atraccion>
+        
+            <Atraccion id="PIR-02">
+                <nombre>Minibarco</nombre>
+                <estado>Operativa</estado>
+                <alturamaxima>1.20</alturamaxima>
+                <tipo>Infantil</tipo>
+                <intensidad>Suave</intensidad>
+                <accesoexpress>false</accesoexpress>
+                <fecharevision>2024-02-03</fecharevision>
+                <idmantenimiento>MT008</idmantenimiento>
+            </Atraccion>
+   
+            <Atraccion id="PIR-03">
+                <nombre>El Kraken</nombre>
+                <estado>Cerrada</estado>
+                <alturaminima>1.40</alturaminima>
+                <tipo>Atracción giratoria</tipo>
+                <intensidad>Intenso</intensidad>
+                <accesoexpress>true</accesoexpress>
+                <fecharevision>2023-04-08</fecharevision>
+                <idmantenimiento>MT009</idmantenimiento>
+            </Atraccion>
+ 
+            <Atraccion id="PIR-04">
+                <nombre>Siete Mares</nombre>
+                <estado>Operativa</estado>
+                <alturaminima>1.40</alturaminima>
+                <tipo>Montaña rusa</tipo>
+                <intensidad>Intenso</intensidad>
+                <accesoexpress>true</accesoexpress>
+                <fecharevision>2023-02-12</fecharevision>
+                <idmantenimiento>MT010</idmantenimiento>
+            </Atraccion>
+        </AreaTematica>
+
+        <!-- Cool Children Land-->
+        <AreaTematica>
+            <nombreAT>Cool Children Land</nombreAT>
+            <descripcion>Area de niños</descripcion>
+
+            <Atraccion id="CCL-01">
+                <nombre>Pequecoaster</nombre>
+                <estado>Operativa</estado>
+                <alturaminima>0.80</alturaminima>
+                <tipo>Montaña rusa</tipo>
+                <intensidad>Suave</intensidad>
+                <accesoexpress>true</accesoexpress>
+                <fecharevision>2023-02-12</fecharevision>
+                <idmantenimiento>MT011</idmantenimiento>
+            </Atraccion>
+    
+        </AreaTematica>
+
+        <!-- Calle Futura -->
+
+        <AreaTematica>
+            <nombreAT>Calle Futura</nombreAT>
+            <descripcion>Area inspirada en el futuro</descripcion>
+
+            <Atraccion id="FUT-01">
+                <nombre>Nave Alocada</nombre>
+                <estado>Operativa</estado>
+                <alturaminima>1.00</alturaminima>
+                <tipo>Atracción giratoria</tipo>
+                <intensidad>Moderado</intensidad>
+                <accesoexpress>false</accesoexpress>
+                <fecharevision>2023-04-08</fecharevision>
+                <idmantenimiento>MT012</idmantenimiento>
+            </Atraccion>
+
+            <Atraccion id="FUT-02">
+                <nombre>AquaUFO</nombre>
+                <estado>Operativa</estado>
+                <alturaminima>1.00</alturaminima>
+                <tipo>Atracción acuática</tipo>
+                <intensidad>Moderado</intensidad>
+                <accesoexpress>true</accesoexpress>
+                <fecharevision>2019-04-08</fecharevision>
+                <idmantenimiento>MT013</idmantenimiento>
+            </Atraccion>
+        </AreaTematica>
+      </AreasTematicas>
+
+
+    <!-- Ejemplos de Personal -->
+
+
+    <Personal uid="0001">
+    <tipoPersonal>Responsable de área</tipoPersonal>
+    <areatematica>
+        <nombreAT>Plaza Mayor</nombreAT>
+        <descripcion>Área central del parque</descripcion>
+        <Atraccion id="PLA-01"/>
+    </areatematica>
+    </Personal>
+
+    <Personal uid="0002">
+        <tipoPersonal>Responsable de área</tipoPersonal>
+        <areatematica>
+            <nombreAT>The Far West</nombreAT>
+            <descripcion>Área inspirada en el salvaje oeste</descripcion>
+            <Atraccion id="TFW-01"/>
+        </areatematica>
+    </Personal>
+
+    <Personal uid="0003">
+        <tipoPersonal>Responsable de área</tipoPersonal>
+        <areatematica>
+            <nombreAT>Territorio Pirata</nombreAT>
+            <descripcion>Área inspirada en piratas</descripcion>
+            <Atraccion id="PIR-01"/>
+        </areatematica>
+    </Personal>
+
+    <Personal uid="0004">
+        <tipoPersonal>Responsable de área</tipoPersonal>
+        <areatematica>
+            <nombreAT>Cool Children Land</nombreAT>
+            <descripcion>Área de niños</descripcion>
+            <Atraccion id="CCL-01"/>
+        </areatematica>
+    </Personal>
+
+    <Personal uid="0005">
+        <tipoPersonal>Responsable de área</tipoPersonal>
+        <areatematica>
+            <nombreAT>Calle Futura</nombreAT>
+            <descripcion>Área inspirada en el futuro</descripcion>
+            <Atraccion id="FUT-01"/>
+        </areatematica>
+    </Personal>
+
+    <Personal uid="0006">
+        <tipoPersonal>Técnico</tipoPersonal>
+        <atraccion id="PLA-01"/>
+    </Personal>
+
+    <Personal uid="0007">
+        <tipoPersonal>Técnico</tipoPersonal>
+        <atraccion id="PLA-02"/>
+    </Personal>
+
+    <Personal uid="0008">
+        <tipoPersonal>Técnico</tipoPersonal>
+        <atraccion id="TFW-02"/>
+    </Personal>
+
+    <Personal uid="0009">
+        <tipoPersonal>Técnico</tipoPersonal>
+        <atraccion id="PIR-02"/>
+    </Personal>
+
+    <Personal uid="0010">
+        <tipoPersonal>Técnico</tipoPersonal>
+        <atraccion id="CCL-01"/>
+    </Personal>
+
+    <Personal uid="0011">
+        <tipoPersonal>Técnico</tipoPersonal>
+        <atraccion id="FUT-01"/>
+    </Personal>
+
+    <Personal uid="0012">
+        <tipoPersonal>Técnico</tipoPersonal>
+        <atraccion id="TFW-03"/>
+    </Personal>
+
+    <Personal uid="0013">
+        <tipoPersonal>Técnico</tipoPersonal>
+        <atraccion id="PIR-03"/>
+    </Personal>
+
+    <Personal uid="0014">
+        <tipoPersonal>Técnico</tipoPersonal>
+        <atraccion id="PIR-04"/>
+    </Personal>
+
+    <Personal uid="0015">
+        <tipoPersonal>Técnico</tipoPersonal>
+        <atraccion id="FUT-02"/>
+    </Personal>
+</xs:schema>

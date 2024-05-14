@@ -1,0 +1,188 @@
+{
+  "atracciones": {
+    "PLA-01": {
+      "nombre": "Carrusel",
+      "estado": "Operativa",
+      "alturaminima": 0.8,
+      "tipo": "Infantil",
+      "intensidad": "Suave",
+      "accesoexpress": false,
+      "fecharevision": "2023-02-20",
+      "idmantenimiento": "MT001",
+      "tiempo_espera": {
+        "normal": 15,
+        "express": null
+      }
+    },
+    "PLA-02": {
+      "nombre": "Motospeed",
+      "estado": "Operativa",
+      "alturaminima": 1.2,
+      "alturamaxima": 1.95,
+      "tipo": "Montaña rusa",
+      "intensidad": "Moderado",
+      "accesoexpress": true,
+      "fecharevision": "2023-01-11",
+      "idmantenimiento": "MT002",
+      "tiempo_espera": {
+        "normal": 30,
+        "express": 10
+      }
+    },
+    "PLA-03": {
+      "nombre": "Caída Libre",
+      "estado": "Operativa",
+      "alturaminima": 1.4,
+      "alturamaxima": 1.95,
+      "tipo": "Atracción giratoria",
+      "intensidad": "Intenso",
+      "accesoexpress": true,
+      "fecharevision": "2024-02-01",
+      "idmantenimiento": "MT003",
+      "tiempo_espera": {
+        "normal": 45,
+        "express": 15
+      }
+    },
+    "TFW-01": {
+      "nombre": "Saloon",
+      "estado": "Operativa",
+      "alturaminima": 1.3,
+      "tipo": "Atracción giratoria",
+      "intensidad": "Moderado",
+      "accesoexpress": true,
+      "fecharevision": "2021-01-01",
+      "idmantenimiento": "MT004",
+      "tiempo_espera": {
+        "normal": 20,
+        "express": 8
+      }
+    },
+    "TFW-02": {
+      "nombre": "Iron Cowboy",
+      "estado": "En Obras",
+      "alturaminima": 1.2,
+      "alturamaxima": 1.9,
+      "tipo": "Montaña rusa",
+      "intensidad": "Intenso",
+      "accesoexpress": true,
+      "idmantenimiento": "MT005",
+      "tiempo_espera": {
+        "normal": null,
+        "express": null
+      }
+    },
+    "TFW-03": {
+      "nombre": "Rápidos de Río Grande",
+      "estado": "Operativa",
+      "alturaminima": 1,
+      "tipo": "Atracción acuática",
+      "intensidad": "Moderado",
+      "accesoexpress": true,
+      "fecharevision": "2024-02-01",
+      "idmantenimiento": "MT006",
+      "tiempo_espera": {
+        "normal": 40,
+        "express": 12
+      }
+    },
+    "PIR-01": {
+      "nombre": "Barco Pirata",
+      "estado": "Cerrada",
+      "alturaminima": 1.2,
+      "tipo": "Atracción giratoria",
+      "intensidad": "Moderado",
+      "accesoexpress": false,
+      "fecharevision": "2023-03-02",
+      "idmantenimiento": "MT007",
+      "tiempo_espera": {
+        "normal": null,
+        "express": null
+      }
+    },
+    "PIR-02": {
+      "nombre": "Minibarco",
+      "estado": "Operativa",
+      "alturamaxima": 1.2,
+      "tipo": "Infantil",
+      "intensidad": "Suave",
+      "accesoexpress": false,
+      "fecharevision": "2024-02-03",
+      "idmantenimiento": "MT008",
+      "tiempo_espera": {
+        "normal": 10,
+        "express": null
+      }
+    },
+    "PIR-03": {
+      "nombre": "El Kraken",
+      "estado": "Cerrada",
+      "alturaminima": 1.4,
+      "tipo": "Atracción giratoria",
+      "intensidad": "Intenso",
+      "accesoexpress": true,
+      "fecharevision": "2023-04-08",
+      "idmantenimiento": "MT009",
+      "tiempo_espera": {
+        "normal": null,
+        "express": null
+      }
+    },
+    "PIR-04": {
+      "nombre": "Siete Mares",
+      "estado": "Operativa",
+      "alturaminima": 1.4,
+      "tipo": "Montaña rusa",
+      "intensidad": "Intenso",
+      "accesoexpress": true,
+      "fecharevision": "2023-02-12",
+      "idmantenimiento": "MT010",
+      "tiempo_espera": {
+        "normal": 50,
+        "express": 20
+      }
+    },
+    "CCL-01": {
+      "nombre": "Pequecoaster",
+      "estado": "Operativa",
+      "alturaminima": 0.8,
+      "tipo": "Montaña rusa",
+      "intensidad": "Suave",
+      "accesoexpress": true,
+      "fecharevision": "2023-02-12",
+      "idmantenimiento": "MT011",
+      "tiempo_espera": {
+        "normal": 25,
+        "express": 7
+      }
+    },
+    "FUT-01": {
+      "nombre": "Nave Alocada",
+      "estado": "Operativa",
+      "alturaminima": 1,
+      "tipo": "Atracción giratoria",
+      "intensidad": "Moderado",
+      "accesoexpress": false,
+      "fecharevision": "2023-04-08",
+      "idmantenimiento": "MT012",
+      "tiempo_espera": {
+        "normal": 35,
+        "express": null
+      }
+    },
+    "FUT-02": {
+      "nombre": "AquaUFO",
+      "estado": "Operativa",
+      "alturaminima": 1,
+      "tipo": "Atracción acuática",
+      "intensidad": "Moderado",
+      "accesoexpress": true,
+      "fecharevision": "2019-04-08",
+      "idmantenimiento": "MT013",
+      "tiempo_espera": {
+        "normal": 40,
+        "express": 10
+      }
+    }
+  }
+}
