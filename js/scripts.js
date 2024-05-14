@@ -88,7 +88,7 @@ function generarContenido(atracciones) {
                 contenido += '<p class="card-text"><strong>Intensidad:</strong> ' + atraccion.intensidad + '</p>';
                 contenido += '<p class="card-text"><strong>Tiempo de Espera:</strong> ' + (atraccion.tiempoEspera ? atraccion.tiempoEspera + ' minutos' : 'No disponible') + '</p>';
                 contenido += '<p class="card-text"><strong>Tiempo de Espera con Pase Express:</strong> ' + (atraccion.tiempoEsperaExpress ? atraccion.tiempoEsperaExpress + ' minutos' : 'No disponible') + '</p>';
-                contenido += '<button class="btn btn-primary marcar-favorito">Marcar como Favorito</button>';
+                contenido += '<img src="logo/estrella_vacia.png" class="favorito-icon marcar-favorito" alt="Marcar como Favorito" />';
                 contenido += '</div>';
                 contenido += '</div>';
             }
@@ -97,7 +97,7 @@ function generarContenido(atracciones) {
 
     $('#atracciones-list').html(contenido);
 
-    // Asignar eventos a los botones de favorito
+    // Asignar eventos a los iconos de favorito
     $('.marcar-favorito').click(function() {
         var card = $(this).closest('.card');
         var id = card.data('id');
@@ -112,9 +112,11 @@ function toggleFavorito(id, card) {
     if (index === -1) {
         favoritos.push(id);
         card.addClass('favorito');
+        card.find('.marcar-favorito').attr('src', 'logo/estrella_llena.png');
     } else {
         favoritos.splice(index, 1);
         card.removeClass('favorito');
+        card.find('.marcar-favorito').attr('src', 'logo/estrella_vacia.png');
     }
 
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
@@ -125,6 +127,7 @@ function restaurarFavoritos() {
     for (var i = 0; i < favoritos.length; i++) {
         var card = $('.card[data-id="' + favoritos[i] + '"]');
         card.addClass('favorito');
+        card.find('.marcar-favorito').attr('src', 'logo/estrella_llena.png');
     }
 }
 
