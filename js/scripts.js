@@ -180,25 +180,3 @@ function restaurarFavoritos() {
     }
 }
 
-function toggleFavorito(id, card) {
-    var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-    var index = favoritos.indexOf(id);
-
-    if (index === -1) {
-        favoritos.push(id);
-        card.addClass('favorito');
-        card.find('.marcar-favorito').attr('src', 'logo/estrella_llena.png');
-    } else {
-        favoritos.splice(index, 1);
-        card.removeClass('favorito');
-        card.find('.marcar-favorito').attr('src', 'logo/estrella_vacia.png');
-    }
-
-    localStorage.setItem('favoritos', JSON.stringify(favoritos));
-}
-
-function esFavorito(id) {
-    var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-    return favoritos.includes(id);
-}
-
