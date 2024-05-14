@@ -197,3 +197,8 @@ function toggleFavorito(id, card) {
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
 }
 
+function esFavorito(id) {
+    var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    return favoritos.includes(id);
+}
+
