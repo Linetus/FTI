@@ -47,15 +47,18 @@
 
         <!-- Contenido Principal -->
         <div class="container">
-            <h1 class="text-center mt-5">Listado de Atracciones</h1>
-            <div class="form-check mb-4">
-                <input class="form-check-input" type="checkbox" id="mostrar-solo-favoritos">
-                <label class="form-check-label" for="mostrar-solo-favoritos">
-                    Mostrar solamente favoritos
-                </label>
+            <div class="row mb-3">
+                <div class="col-md-6 offset-md-6 text-right">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="mostrar-solo-favoritos">
+                        <label class="form-check-label" for="mostrar-solo-favoritos">Mostrar solamente favoritos</label>
+                    </div>
+                </div>
             </div>
+            <h1 class="text-center mt-3">Listado de Atracciones</h1>
             <div id="atracciones-list" class="mt-4"></div>
         </div>
+        
 
         <!-- Pie de página -->
         <footer class="bg-dark text-white text-center py-3 mt-auto">

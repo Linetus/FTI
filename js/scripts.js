@@ -173,12 +173,27 @@ function mostrarFavoritos() {
 
 function restaurarFavoritos() {
     var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-    $('.card').each(function() {
-        var card = $(this);
-        var id = card.data('id');
-        if (favoritos.indexOf(id) !== -1) {
-            card.addClass('favorito');
-            card.find('.marcar-favorito').attr('src', 'logo/estrella_llena.png');
-        }
-    });
+    for (var i = 0; i < favoritos.length; i++) {
+        var id = favoritos[i];
+        $('.card[data-id="' + id + '"]').addClass('favorito');
+        $('.card[data-id="' + id + '"]').find('.marcar-favorito').attr('src', 'logo/estrella_llena.png');
+    }
 }
+
+function toggleFavorito(id, card) {
+    var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    var index = favoritos.indexOf(id);
+
+    if (index === -1) {
+        favoritos.push(id);
+        card.addClass('favorito');
+        card.find('.marcar-favorito').attr('src', 'logo/estrella_llena.png');
+    } else {
+        favoritos.splice(index, 1);
+        card.removeClass('favorito');
+        card.find('.marcar-favorito').attr('src', 'logo/estrella_vacia.png');
+    }
+
+    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+}
+
