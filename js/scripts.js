@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var todasLasAtracciones = [];
+
     // Cargar y procesar datos del XML
     $.ajax({
         type: "GET",
@@ -12,6 +14,7 @@ $(document).ready(function() {
             $.getJSON("json/datos.json", function(json) {
                 // Combinar datos del XML y JSON
                 var atracciones = combinarDatos(atraccionesXML, json);
+                todasLasAtracciones = atracciones;
                 
                 // Generar y renderizar contenido dinámico
                 generarContenido(atracciones);
@@ -23,8 +26,12 @@ $(document).ready(function() {
     });
 
     // Evento para mostrar solo favoritos
-    $('#mostrar-favoritos').click(function() {
-        mostrarFavoritos();
+    $('#mostrar-solo-favoritos').change(function() {
+        if (this.checked) {
+            mostrarFavoritos();
+        } else {
+            generarContenido(todasLasAtracciones);
+        }
     });
 });
 
@@ -81,14 +88,16 @@ function generarContenido(atracciones) {
             contenido += '<h2 class="mt-5">' + area + '</h2>';
             for (var j = 0; j < areas[area].length; j++) {
                 var atraccion = areas[area][j];
-                contenido += '<div class="card mb-3" data-id="' + atraccion.id + '">';
+                var esFavorito = esFavorito(atraccion.id) ? 'favorito' : '';
+                var iconoFavorito = esFavorito ? 'estrella_llena.png' : 'estrella_vacia.png';
+                contenido += '<div class="card mb-3 ' + esFavorito + '" data-id="' + atraccion.id + '">';
                 contenido += '<div class="card-body">';
                 contenido += '<h5 class="card-title">' + atraccion.nombre + '</h5>';
                 contenido += '<p class="card-text"><strong>Tipo:</strong> ' + atraccion.tipo + '</p>';
                 contenido += '<p class="card-text"><strong>Intensidad:</strong> ' + atraccion.intensidad + '</p>';
                 contenido += '<p class="card-text"><strong>Tiempo de Espera:</strong> ' + (atraccion.tiempoEspera ? atraccion.tiempoEspera + ' minutos' : 'No disponible') + '</p>';
                 contenido += '<p class="card-text"><strong>Tiempo de Espera con Pase Express:</strong> ' + (atraccion.tiempoEsperaExpress ? atraccion.tiempoEsperaExpress + ' minutos' : 'No disponible') + '</p>';
-                contenido += '<img src="imagenes/logo/estrella_vacia.png" class="favorito-icon marcar-favorito" alt="Marcar como Favorito" />';
+                contenido += '<img src="logo/' + iconoFavorito + '" class="favorito-icon marcar-favorito" alt="Marcar como Favorito" />';
                 contenido += '</div>';
                 contenido += '</div>';
             }
@@ -112,29 +121,64 @@ function toggleFavorito(id, card) {
     if (index === -1) {
         favoritos.push(id);
         card.addClass('favorito');
-        card.find('.marcar-favorito').attr('src', 'imagenes/logo/estrella_llena.png');
+        card.find('.marcar-favorito').attr('src', 'logo/estrella_llena.png');
     } else {
         favoritos.splice(index, 1);
         card.removeClass('favorito');
-        card.find('.marcar-favorito').attr('src', 'imagenes/logo/estrella_vacia.png');
+        card.find('.marcar-favorito').attr('src', 'logo/estrella_vacia.png');
     }
 
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
 }
 
-function restaurarFavoritos() {
+function esFavorito(id) {
     var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-    for (var i = 0; i < favoritos.length; i++) {
-        var card = $('.card[data-id="' + favoritos[i] + '"]');
-        card.addClass('favorito');
-        card.find('.marcar-favorito').attr('src', 'imagenes/logo/estrella_llena.png');
-    }
+    return favoritos.indexOf(id) !== -1;
 }
 
 function mostrarFavoritos() {
-    $('.card').hide();
     var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-    for (var i = 0; i < favoritos.length; i++) {
-        $('.card[data-id="' + favoritos[i] + '"]').show();
+    var contenido = '';
+
+    if (favoritos.length === 0) {
+        contenido = '<p>No tienes atracciones marcadas como favoritas.</p>';
+    } else {
+        for (var i = 0; i < todasLasAtracciones.length; i++) {
+            if (favoritos.indexOf(todasLasAtracciones[i].id) !== -1) {
+                var atraccion = todasLasAtracciones[i];
+                var iconoFavorito = 'estrella_llena.png';
+                contenido += '<div class="card mb-3 favorito" data-id="' + atraccion.id + '">';
+                contenido += '<div class="card-body">';
+                contenido += '<h5 class="card-title">' + atraccion.nombre + '</h5>';
+                contenido += '<p class="card-text"><strong>Tipo:</strong> ' + atraccion.tipo + '</p>';
+                contenido += '<p class="card-text"><strong>Intensidad:</strong> ' + atraccion.intensidad + '</p>';
+                contenido += '<p class="card-text"><strong>Tiempo de Espera:</strong> ' + (atraccion.tiempoEspera ? atraccion.tiempoEspera + ' minutos' : 'No disponible') + '</p>';
+                contenido += '<p class="card-text"><strong>Tiempo de Espera con Pase Express:</strong> ' + (atraccion.tiempoEsperaExpress ? atraccion.tiempoEsperaExpress + ' minutos' : 'No disponible') + '</p>';
+                contenido += '<img src="logo/' + iconoFavorito + '" class="favorito-icon marcar-favorito" alt="Marcar como Favorito" />';
+                contenido += '</div>';
+                contenido += '</div>';
+            }
+        }
     }
+
+    $('#atracciones-list').html(contenido);
+
+    // Asignar eventos a los iconos de favorito
+    $('.marcar-favorito').click(function() {
+        var card = $(this).closest('.card');
+        var id = card.data('id');
+        toggleFavorito(id, card);
+    });
+}
+
+function restaurarFavoritos() {
+    var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    $('.card').each(function() {
+        var card = $(this);
+        var id = card.data('id');
+        if (favoritos.indexOf(id) !== -1) {
+            card.addClass('favorito');
+            card.find('.marcar-favorito').attr('src', 'logo/estrella_llena.png');
+        }
+    });
 }
