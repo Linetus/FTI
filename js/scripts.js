@@ -112,11 +112,11 @@ function toggleFavorito(id, card) {
     if (index === -1) {
         favoritos.push(id);
         card.addClass('favorito');
-        card.find('.marcar-favorito').attr('src', 'logo/estrella_llena.png');
+        card.find('.marcar-favorito').attr('src', 'imagenes/logo/estrella_llena.png');
     } else {
         favoritos.splice(index, 1);
         card.removeClass('favorito');
-        card.find('.marcar-favorito').attr('src', 'logo/estrella_vacia.png');
+        card.find('.marcar-favorito').attr('src', 'imagenes/logo/estrella_vacia.png');
     }
 
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
@@ -127,7 +127,7 @@ function restaurarFavoritos() {
     for (var i = 0; i < favoritos.length; i++) {
         var card = $('.card[data-id="' + favoritos[i] + '"]');
         card.addClass('favorito');
-        card.find('.marcar-favorito').attr('src', 'logo/estrella_llena.png');
+        card.find('.marcar-favorito').attr('src', 'imagenes/logo/estrella_llena.png');
     }
 }
 
