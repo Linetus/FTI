@@ -15,8 +15,16 @@ $(document).ready(function() {
                 
                 // Generar y renderizar contenido dinámico
                 generarContenido(atracciones);
+                
+                // Restaurar favoritos del localStorage
+                restaurarFavoritos();
             });
         }
+    });
+
+    // Evento para mostrar solo favoritos
+    $('#mostrar-favoritos').click(function() {
+        mostrarFavoritos();
     });
 });
 
@@ -73,13 +81,14 @@ function generarContenido(atracciones) {
             contenido += '<h2 class="mt-5">' + area + '</h2>';
             for (var j = 0; j < areas[area].length; j++) {
                 var atraccion = areas[area][j];
-                contenido += '<div class="card mb-3">';
+                contenido += '<div class="card mb-3" data-id="' + atraccion.id + '">';
                 contenido += '<div class="card-body">';
                 contenido += '<h5 class="card-title">' + atraccion.nombre + '</h5>';
                 contenido += '<p class="card-text"><strong>Tipo:</strong> ' + atraccion.tipo + '</p>';
                 contenido += '<p class="card-text"><strong>Intensidad:</strong> ' + atraccion.intensidad + '</p>';
                 contenido += '<p class="card-text"><strong>Tiempo de Espera:</strong> ' + (atraccion.tiempoEspera ? atraccion.tiempoEspera + ' minutos' : 'No disponible') + '</p>';
                 contenido += '<p class="card-text"><strong>Tiempo de Espera con Pase Express:</strong> ' + (atraccion.tiempoEsperaExpress ? atraccion.tiempoEsperaExpress + ' minutos' : 'No disponible') + '</p>';
+                contenido += '<button class="btn btn-primary marcar-favorito">Marcar como Favorito</button>';
                 contenido += '</div>';
                 contenido += '</div>';
             }
@@ -87,4 +96,42 @@ function generarContenido(atracciones) {
     }
 
     $('#atracciones-list').html(contenido);
+
+    // Asignar eventos a los botones de favorito
+    $('.marcar-favorito').click(function() {
+        var card = $(this).closest('.card');
+        var id = card.data('id');
+        toggleFavorito(id, card);
+    });
+}
+
+function toggleFavorito(id, card) {
+    var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    var index = favoritos.indexOf(id);
+
+    if (index === -1) {
+        favoritos.push(id);
+        card.addClass('favorito');
+    } else {
+        favoritos.splice(index, 1);
+        card.removeClass('favorito');
+    }
+
+    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+}
+
+function restaurarFavoritos() {
+    var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    for (var i = 0; i < favoritos.length; i++) {
+        var card = $('.card[data-id="' + favoritos[i] + '"]');
+        card.addClass('favorito');
+    }
+}
+
+function mostrarFavoritos() {
+    $('.card').hide();
+    var favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+    for (var i = 0; i < favoritos.length; i++) {
+        $('.card[data-id="' + favoritos[i] + '"]').show();
+    }
 }

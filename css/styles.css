@@ -4,3 +4,8 @@
     background-color: #87CEEB; /* Azul celeste */
     color: white; /* Asegura que el texto sea blanco */
 }
+
+.favorito {
+    border: 2px solid gold;
+    background-color: #fff8dc;
+}
