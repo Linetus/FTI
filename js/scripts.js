@@ -35,7 +35,8 @@ function procesarXML(xml) {
                 areaTematica: areaTematica,
                 tipo: tipo,
                 intensidad: intensidad,
-                tiempoEspera: null // Se llenará después con el JSON
+                tiempoEspera: null, // Se llenará después con el JSON
+                tiempoEsperaExpress: null // Se llenará después con el JSON
             });
         });
     });
@@ -47,6 +48,7 @@ function combinarDatos(atraccionesXML, atraccionesJSON) {
         var id = atraccionesXML[i].id;
         if (atraccionesJSON.atracciones.hasOwnProperty(id)) {
             atraccionesXML[i].tiempoEspera = atraccionesJSON.atracciones[id].tiempo_espera.normal;
+            atraccionesXML[i].tiempoEsperaExpress = atraccionesJSON.atracciones[id].tiempo_espera.express;
         }
     }
     return atraccionesXML;
@@ -77,6 +79,7 @@ function generarContenido(atracciones) {
                 contenido += '<p class="card-text"><strong>Tipo:</strong> ' + atraccion.tipo + '</p>';
                 contenido += '<p class="card-text"><strong>Intensidad:</strong> ' + atraccion.intensidad + '</p>';
                 contenido += '<p class="card-text"><strong>Tiempo de Espera:</strong> ' + (atraccion.tiempoEspera ? atraccion.tiempoEspera + ' minutos' : 'No disponible') + '</p>';
+                contenido += '<p class="card-text"><strong>Tiempo de Espera con Pase Express:</strong> ' + (atraccion.tiempoEsperaExpress ? atraccion.tiempoEsperaExpress + ' minutos' : 'No disponible') + '</p>';
                 contenido += '</div>';
                 contenido += '</div>';
             }
