@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', cargarEspectaculos);
 
 async function cargarEspectaculos() {
     try {
-        const response = await fetch('https://samuelencinas.dev/shows_parque/P16');
+        const response = await fetch('https://samuelencinas.dev/shows_parque/P19');
         if (!response.ok) {
             throw new Error('Error al cargar los datos');
         }
