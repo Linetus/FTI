@@ -14,32 +14,29 @@ async function cargarEspectaculos() {
 }
 
 function mostrarEspectaculos(data) {
-    const currentDate = new Date().toISOString().split('T')[0];
-    const showsToday = data.shows[currentDate];
+    const shows = data.shows;
 
     const espectaculosList = document.getElementById('espectaculos-list');
-    if (!showsToday || showsToday.length === 0) {
+    if (!shows || shows.length === 0) {
         espectaculosList.innerHTML = '<p>No hay espectáculos programados para hoy.</p>';
         return;
     }
 
     let contenido = '<div class="list-group">';
-    showsToday.forEach(area => {
-        for (const key in area) {
-            if (Object.hasOwnProperty.call(area, key)) {
-                const espectaculos = area[key];
-                if (espectaculos.length > 0) {
-                    contenido += `<h5>${key}</h5>`;
-                    espectaculos.forEach(show => {
-                        contenido += '<a href="#" class="list-group-item list-group-item-action">';
-                        contenido += `<h6 class="mb-1">${show.name}</h6>`;
-                        contenido += `<p class="mb-1">Horarios: ${show.hours.join(', ')}</p>`;
-                        if (show.express) {
-                            contenido += '<small>Con pase express disponible</small>';
-                        }
-                        contenido += '</a>';
-                    });
-                }
+    shows.forEach(area => {
+        for (const areaName in area) {
+            if (Object.hasOwnProperty.call(area, areaName)) {
+                const espectaculos = area[areaName];
+                contenido += `<h5>${areaName}</h5>`;
+                espectaculos.forEach(show => {
+                    contenido += '<a href="#" class="list-group-item list-group-item-action">';
+                    contenido += `<h6 class="mb-1">${show.name}</h6>`;
+                    contenido += `<p class="mb-1">Horarios: ${show.hours.join(', ')}</p>`;
+                    if (show.express) {
+                        contenido += '<small>Con pase express disponible</small>';
+                    }
+                    contenido += '</a>';
+                });
             }
         }
     });
