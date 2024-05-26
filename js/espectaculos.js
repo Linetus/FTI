@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', cargarEspectaculos);
 
 async function cargarEspectaculos() {
     try {
-        const response = await fetch('https://samuelencinas.dev/shows_parque/P19');
+        const response = await fetch('https://samuelencinas.dev/shows_parque/P16');
         if (!response.ok) {
             throw new Error('Error al cargar los datos');
         }
@@ -24,14 +24,24 @@ function mostrarEspectaculos(data) {
     }
 
     let contenido = '<div class="list-group">';
-    showsToday.forEach(show => {
-        contenido += '<a href="#" class="list-group-item list-group-item-action">';
-        contenido += `<h5 class="mb-1">${show.name}</h5>`;
-        contenido += `<p class="mb-1">Horarios: ${show.hours.join(', ')}</p>`;
-        if (show.express) {
-            contenido += '<small>Con pase express disponible</small>';
+    showsToday.forEach(area => {
+        for (const key in area) {
+            if (Object.hasOwnProperty.call(area, key)) {
+                const espectaculos = area[key];
+                if (espectaculos.length > 0) {
+                    contenido += `<h5>${key}</h5>`;
+                    espectaculos.forEach(show => {
+                        contenido += '<a href="#" class="list-group-item list-group-item-action">';
+                        contenido += `<h6 class="mb-1">${show.name}</h6>`;
+                        contenido += `<p class="mb-1">Horarios: ${show.hours.join(', ')}</p>`;
+                        if (show.express) {
+                            contenido += '<small>Con pase express disponible</small>';
+                        }
+                        contenido += '</a>';
+                    });
+                }
+            }
         }
-        contenido += '</a>';
     });
     contenido += '</div>';
 
