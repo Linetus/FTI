@@ -138,3 +138,25 @@ function mostrarFavoritos() {
         $('.card[data-id="' + favoritos[i] + '"]').show();
     }
 }
+
+// Función para inicializar el mapa
+function initMap() {
+    // Coordenadas de la dirección que quieres mostrar en el mapa
+    var myLatLng = { lat: 40.416775, lng: -3.703790 }; // Madrid, España
+
+    // Opciones del mapa
+    var mapOptions = {
+        zoom: 15, // Nivel de zoom
+        center: myLatLng // Centro del mapa
+    };
+
+    // Crear el mapa dentro del contenedor con id "map"
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    // Marcador en la ubicación especificada
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'FTILand - Calle de la Fantasía, 123, Madrid, España'
+    });
+}
