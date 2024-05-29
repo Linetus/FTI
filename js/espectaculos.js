@@ -55,7 +55,6 @@ function mostrarEspectaculos(data) {
     contenido += '</div>';
     espectaculosList.innerHTML = contenido;
 
-    // Evitar el comportamiento predeterminado al hacer clic en los enlaces
     const enlaces = document.querySelectorAll('#espectaculos-list a');
     enlaces.forEach(enlace => {
         enlace.addEventListener('click', e => {
