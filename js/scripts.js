@@ -1,28 +1,26 @@
 $(document).ready(function() {
-    // Cargar y procesar datos del XML
     $.ajax({
         type: "GET",
         url: "xml/datos.xml",
         dataType: "xml",
         success: function(xml) {
-            // Procesar datos del XML
             var atraccionesXML = procesarXML(xml);
             
-            // Cargar y procesar datos del JSON
+            
             $.getJSON("json/datos.json", function(json) {
-                // Combinar datos del XML y JSON
+                // Combina los datos
                 var atracciones = combinarDatos(atraccionesXML, json);
                 
-                // Generar y renderizar contenido dinámico
+                
                 generarContenido(atracciones);
                 
-                // Restaurar favoritos del localStorage
+                //Coge los favoritos
                 restaurarFavoritos();
             });
         }
     });
 
-    // Evento para mostrar solo favoritos
+    //Muestra solo los favoritos
     $('#mostrar-favoritos').click(function() {
         mostrarFavoritos();
     });
@@ -43,8 +41,8 @@ function procesarXML(xml) {
                 areaTematica: areaTematica,
                 tipo: tipo,
                 intensidad: intensidad,
-                tiempoEspera: null, // Se llenará después con el JSON
-                tiempoEsperaExpress: null // Se llenará después con el JSON
+                tiempoEspera: null,
+                tiempoEsperaExpress: null
             });
         });
     });
@@ -66,7 +64,7 @@ function generarContenido(atracciones) {
     var contenido = '';
     var areas = {};
 
-    // Agrupar atracciones por área temática
+   //Agrupamos por area
     for (var i = 0; i < atracciones.length; i++) {
         var area = atracciones[i].areaTematica;
         if (!areas[area]) {
@@ -75,7 +73,7 @@ function generarContenido(atracciones) {
         areas[area].push(atracciones[i]);
     }
 
-    // Generar contenido agrupado por áreas temáticas
+    //Generamos el contenido
     for (var area in areas) {
         if (areas.hasOwnProperty(area)) {
             contenido += '<h2 class="mt-5">' + area + '</h2>';
@@ -97,7 +95,7 @@ function generarContenido(atracciones) {
 
     $('#atracciones-list').html(contenido);
 
-    // Asignar eventos a los iconos de favorito
+     //Favoritos
     $('.marcar-favorito').click(function() {
         var card = $(this).closest('.card');
         var id = card.data('id');
@@ -139,24 +137,21 @@ function mostrarFavoritos() {
     }
 }
 
-// Función para inicializar el mapa
+//Mapa
 function initMap() {
-    // Coordenadas de la dirección que quieres mostrar en el mapa
-    var myLatLng = { lat: 40.416775, lng: -3.703790 }; // Madrid, España
+    var myLatLng = { lat: 40.416775, lng: -3.703790 };
 
-    // Opciones del mapa
+
     var mapOptions = {
-        zoom: 15, // Nivel de zoom
-        center: myLatLng // Centro del mapa
+        zoom: 15, 
+        center: myLatLng 
     };
 
-    // Crear el mapa dentro del contenedor con id "map"
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-    // Marcador en la ubicación especificada
     var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
-        title: 'FTILand - Calle de la Fantasía, 123, Madrid, España'
+        title: 'FTILand - Calle de la dehesa, 123, Segovia, España'
     });
 }
